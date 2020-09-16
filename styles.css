@@ -1,25 +1,24 @@
 body {
   background-color: #625F63;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .animated {
+  animation-delay: 1.5s;
   animation-duration: 2.5s;
   animation-fill-mode: both;
-  animation-iteration-count: 2;
+  animation-iteration-count: 1;
 }
 
 @keyframes rubberBand {
-  0% {transform: scale(1);}
+  0% {transform: scale(1); opacity: 0;}
   30% {transform: scaleX(1) scaleY(0.75);}
   40% {transform: scaleX(1) scaleY(1.25);}
   60% {transform: scaleX(1) scaleY(0.85);}
   100% {transform: scale(1);}
 }
-.rubberBand {
+
+.flash-ditto {
+  animation-name: flash-ditto;
   animation-name: rubberBand;
 }
 
@@ -403,7 +402,7 @@ body {
   left: 165px;
   transform: rotate(-28deg);
   border-radius: 41% 59% 11% 89% / 58% 67% 33% 42% ;
-  z-index: 2;
+  z-index: 1;
 }
 
 .ditto__shadow--top-left-mask-1 {
@@ -415,7 +414,7 @@ body {
   left: 190px;
   transform: rotate(-19deg);
   clip-path: ellipse(50% 20% at 50% 50%);
-  z-index: 3;
+  z-index: 2;
 }
 
 .ditto__shadow--center {
@@ -471,4 +470,35 @@ body {
   opacity: 0.5;
   width: 800px;
   z-index: 2;
+}
+
+.masterball {
+  width: 100px;
+  position: absolute;
+  top: 450px;
+  left: 680px;
+  z-index: 3;
+}
+
+.masterball__flash {
+  position: absolute;
+  left: 60px;
+  width: 650px;
+  height: 450px;
+  background-color: rgba(255,255,255,2);
+  transform: rotate(10deg);
+  clip-path: polygon(99% 100%, 86% 80%, 97% 41%, 85% 43%, 85% 24%, 75% 33%, 72% 2%, 63% 23%, 42% 2%, 42% 20%, 21% 1%, 19% 19%, 0% 16%, 12% 27%, 0% 51%, 21% 57%, 2% 74%, 23% 75%, 0% 96%, 28% 92%, 30% 100%, 43% 90%, 49% 100%, 54% 81%, 67% 98%, 75% 87%);
+  z-index: 3;
+  animation: flash linear 1s 2;
+  opacity: 0;
+}
+
+@keyframes flash {
+	0% { opacity: 1; }  
+	100% { opacity: 0; }
+}
+
+@keyframes flash-ditto {
+	0% { opacity: 0; }  
+	100% { opacity: 1; }
 }
